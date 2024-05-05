@@ -1,0 +1,176 @@
+3.Write Program for percentage formula using Apex Programming Language.
+public class PercentageCalculator {
+    public static Decimal calculatePercentage(Decimal numerator, Decimal denominator) {
+        if (denominator == 0) {
+            // Handle division by zero error
+            return 0;
+        }
+        Decimal percentage = (numerator / denominator) * 100;
+        return percentage.setScale(2); // Set scale to 2 decimal places
+    }
+}
+copy following code into snippet only:-
+
+Decimal numerator = 25;
+Decimal denominator = 50;
+
+Decimal percentage = PercentageCalculator.calculatePercentage(numerator, denominator);
+System.debug('The percentage is: ' + percentage + '%');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4.Write a program for Calculator using Apex Programming Language.
+public class Calculator {
+    public static Decimal add(Decimal operand1, Decimal operand2) {
+        return operand1 + operand2;
+    }
+public static Decimal subtract(Decimal operand1, Decimal operand2) {
+        return operand1 - operand2;
+ }
+public static Decimal multiply(Decimal operand1, Decimal operand2) {
+        return operand1 * operand2;
+    }
+ public static Decimal divide(Decimal operand1, Decimal operand2) {
+        if (operand2 == 0) {
+            // Handle division by zero error
+            System.debug('Error: Division by zero');
+            return 0;
+        }
+        return operand1 / operand2;
+    }
+}
+
+copy following code into snippet only:-
+
+Decimal operand1 = 10;
+Decimal operand2 = 5;
+Decimal resultAddition = Calculator.add(operand1, operand2);
+System.debug('Addition Result: ' + resultAddition);
+Decimal resultSubtraction = Calculator.subtract(operand1, operand2);
+System.debug('Subtraction Result: ' + resultSubtraction);
+Decimal resultMultiplication = Calculator.multiply(operand1, operand2);
+System.debug('Multiplication Result: ' + resultMultiplication);
+Decimal resultDivision = Calculator.divide(operand1, operand2);
+System.debug('Division Result: ' + resultDivision);
+
+5.Write a program for temperature convertor using Apex Programming Language.
+public class TemperatureConverter {
+    // Convert Celsius to Fahrenheit
+    public static Decimal celsiusToFahrenheit(Decimal celsius) {
+        return (celsius * 9/5) + 32;
+    }
+// Convert Fahrenheit to Celsius
+    public static Decimal fahrenheitToCelsius(Decimal fahrenheit) {
+        return (fahrenheit - 32) * 5/9;
+    }
+// Convert Celsius to Kelvin
+    public static Decimal celsiusToKelvin(Decimal celsius) {
+        return celsius + 273.15;
+    }
+// Convert Kelvin to Celsius
+    public static Decimal kelvinToCelsius(Decimal kelvin) {
+        return kelvin - 273.15;
+    }
+ // Convert Fahrenheit to Kelvin
+    public static Decimal fahrenheitToKelvin(Decimal fahrenheit) {
+        return (fahrenheit + 459.67) * 5/9;
+    }
+// Convert Kelvin to Fahrenheit
+    public static Decimal kelvinToFahrenheit(Decimal kelvin) {
+        return kelvin * 9/5 - 459.67; }
+}
+
+copy following code into snippet only:-
+
+Decimal celsius = 100;
+Decimal fahrenheit = TemperatureConverter.celsiusToFahrenheit(celsius);
+System.debug(celsius + ' Celsius is ' + fahrenheit + ' Fahrenheit');
+Decimal kelvin = TemperatureConverter.celsiusToKelvin(celsius);
+System.debug(celsius + ' Celsius is ' + kelvin + ' Kelvin');
+6.Write a program for number to Decimal convertor in Apex Programming Language.
+public class NumberToDecimalConverter {
+    // Convert integer to Decimal
+    public static Decimal convertToDecimal(Integer number) {
+        return Decimal.valueOf(number);
+    }
+// Convert double to Decimal
+    public static Decimal convertToDecimal(Double number) {
+        return Decimal.valueOf(number);
+    }
+ // Convert string to Decimal
+    public static Decimal convertToDecimal(String numberString) {
+        try {
+            return Decimal.valueOf(numberString);
+        } catch (NumberFormatException e) {
+            // Handle invalid input
+            System.debug('Invalid input: ' + e.getMessage());
+            return null;
+        }
+    }}
+
+copy following code into snippet only:-
+
+Integer intNumber = 42;
+Decimal decimalFromInt = NumberToDecimalConverter.convertToDecimal(intNumber);
+System.debug('Decimal from Integer: ' + decimalFromInt);
+Double doubleNumber = 3.14;
+Decimal decimalFromDouble = NumberToDecimalConverter.convertToDecimal(doubleNumber);
+System.debug('Decimal from Double: ' + decimalFromDouble);
+String stringNumber = '7.5';
+Decimal decimalFromString = NumberToDecimalConverter.convertToDecimal(stringNumber);
+if (decimalFromString != null) {
+    System.debug('Decimal from String: ' + decimalFromString);
+}
+
+
+
+
+
+
+7.Write a program for creating MCQ page using Apex Programming Language.
+public class MCQQuestion {
+    public String questionText { get; set; }
+    public List<String> options { get; set; }
+    public Integer correctOptionIndex { get; set; }
+public MCQQuestion(String questionText, List<String> options, Integer correctOptionIndex) {
+        this.questionText = questionText;
+        this.options = options;
+        this.correctOptionIndex = correctOptionIndex;
+    }
+}
+public class MCQQuiz {
+    public List<MCQQuestion> questions { get; set; }
+      public MCQQuiz() {
+        questions = new List<MCQQuestion>();
+    }
+      public void addQuestion(String questionText, List<String> options, Integer correctOptionIndex) {
+        MCQQuestion question = new MCQQuestion(questionText, options, correctOptionIndex);
+        questions.add(question);
+    }
+}
+
+copy following code into snippet only:-
+
+MCQQuiz quiz = new MCQQuiz();
+quiz.addQuestion(
+    'What is the capital of France?',
+    new List<String>{'London', 'Paris', 'Berlin', 'Madrid'},
+    1
+);
+quiz.addQuestion(
+    'Which planet is closest to the Sun?',
+    new List<String>{'Mars', 'Venus', 'Mercury', 'Earth'},
+    2
+);// Now you can use the quiz object to manage MCQ questions
